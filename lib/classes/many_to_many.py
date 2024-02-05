@@ -66,11 +66,12 @@ class Player:
         if not players:
             return None
         
-        def average_score(player):
-            player_results = [result.score for result in game.results() if result.player == player]
-            return sum(player_results) / len(player_results)
+        game.average_score(cls.all_players)
+        # def average_score(player):
+        #     player_results = [result.score for result in game.results() if result.player == player]
+        #     return sum(player_results) / len(player_results)
         
-        return max(players, key=average_score)
+        return max(players, key= lambda player: game.average_score(player))
 
 class Result:
     all = []
